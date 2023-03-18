@@ -61,7 +61,7 @@ class User:
     query = "SELECT * FROM users WHERE email = %(email)s;"
     results = connectToMySQL(User.DB).query_db(query,user)
     if len(results) >= 1:
-        flash("Email already taken.","register")
+        flash("Email already takenn.","register")
         is_valid = False
     if not EMAIL_REGEX.match(user['email']):
         flash("Invalid Email!!!","register")
