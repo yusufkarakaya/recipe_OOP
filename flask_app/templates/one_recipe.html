@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<main class="one_recipe_main">
+  <header class="one_recipe_header">
+    <h1>Welcome {{user.first_name}}</h1>
+    <div>
+      <a href="/recipes">Back to recipe</a> |
+      <a href="/logout">logout</a>
+    </div>
+  </header>
+  <div class="one_recipe_section">
+    <h2>{{recipe_with_user.name}}</h2>
+    <p>Posted by:{{recipe_with_user.creator.first_name}}</p>
+  </div>
+  <div class="one_recipe_description">
+    <div>
+      <div>Description:</div>
+      <div>Under 30 min? :</div>
+      <div>Instruction:</div>
+      <div>Date made:</div>
+    </div>
+    <div>
+      <div>{{recipe_with_user.description}}</div>
+      <div>{{recipe_with_user.under_30}}</div>
+      <div>{{recipe_with_user.instruction}}</div>
+      <div>{{recipe_with_user.date.strftime('%Y-%m-%d')}}</div>
+    </div>
+  </div>
+</main>
+
+
+
+
+{% endblock %}

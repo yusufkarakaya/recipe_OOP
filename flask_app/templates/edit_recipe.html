@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+
+<main>
+  <header class="create-recipe-header">
+    <h1>Edit recipe!</h1>
+    <div>
+      <a href="/recipes">Back to recipe</a>
+      <a href="/logout">log out</a>
+    </div>
+  </header>
+  <section>
+    <form action="/update_recipe" method="post" style="width: 50%;">
+
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" value="{{recipes.name}}">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input class="form-control" name="description" rows="3" value="{{recipes.description}}"></input>
+      </div>
+      <div class="form-group">
+        <label>Instruction</label>
+        <input class="form-control" name="instruction" rows="3" value="{{recipes.instruction}}"></input>
+      </div>
+
+      <div class="form-group">
+        <label>Date cooked/Made</label>
+        <input class="form-control" type="date" name="date" value="{{ recipes.date.strftime('%Y-%m-%d') }}"></input>
+      </div>
+
+      {% if recipes.under_30 == 'Yes' %}
+      <label for="">Under 30 min?</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="under_30" value="Yes" checked>
+        <label class="form-check-label">
+          {{recipes.under_30}}
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="under_30" value="No">
+        <label class="form-check-label">
+          No
+        </label>
+      </div>
+      {%endif%}
+      {% if recipes.under_30 == 'No' %}
+      <label for="">Under 30 min?</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="under_30" value="No" checked>
+        <label class="form-check-label">
+          {{recipes.under_30}}
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="under_30" value="Yes">
+        <label class="form-check-label">
+          Yes
+        </label>
+      </div>
+      {%endif%}
+      <input hidden name="id" value="{{recipes.id}}">
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+  </section>
+</main>
+
+
+
+{% endblock %}
